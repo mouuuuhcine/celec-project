@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CELEC — We build. We test. We evolve.</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--g:linear-gradient(90deg,#2b4fd0,#6a3fc2,#c23f7c);--bg:#07060f;--panel:#100c22;--line:#241c40;--tx:#ece8f7;--mut:#9a94b8;--cy:#6f80ee;--gr:#e0679a;--am:#c77dd8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.6 "IBM Plex Sans",system-ui,sans-serif;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;background-attachment:fixed;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0,transparent 0,var(--bg) 75%);pointer-events:none;z-index:0}
+main,footer{position:relative;z-index:1}
+h1,h2,h3{font-family:"Chakra Petch",system-ui,sans-serif;margin:0;line-height:1.05}
+section{max-width:960px;margin:0 auto;padding:88px 22px}
+h2{font-size:clamp(30px,7vw,52px);margin-bottom:16px}
+p.lead{color:var(--mut);max-width:60ch;margin:0 0 28px}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:60px}
+.hero h1{font-size:clamp(44px,13vw,110px);letter-spacing:-.01em}
+.hero h1 span{display:block}
+.hero h1 span:last-child{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-family:"Chakra Petch";font-size:18px;margin:18px 0 4px}
+.status{display:inline-flex;gap:8px;align-items:center;font:500 13px "Chakra Petch";color:var(--gr);margin:14px 0}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--gr);box-shadow:0 0 10px var(--gr);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border:1px solid var(--cy);color:var(--cy);background:#6f80ee12;font:700 15px "Chakra Petch";text-decoration:none;border-radius:6px;cursor:pointer;transition:.2s}
+.btn:hover,.btn:focus-visible{background:var(--g);border-color:transparent;color:#fff;box-shadow:0 0 24px #6f80ee66;outline:none}
+.btn.solid{background:var(--g);border-color:transparent;color:#fff}
+svg text{font-family:"Chakra Petch",sans-serif}
+.car{width:100%;max-width:560px;margin-top:20px}
+.flow{stroke-dasharray:6 8;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.spin{transform-origin:center;transform-box:fill-box;animation:rot 2s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px}
+.card h3{font-size:19px;color:var(--cy);margin-bottom:6px}
+.card p{margin:0;color:var(--mut);font-size:15px}
+.card ul{margin:8px 0 0;padding-left:18px;color:var(--mut);font-size:14px}
+/* roadmap */
+.steps{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px}
+.step{flex:1 0 auto;min-width:118px;min-height:56px;background:var(--panel);border:1px solid var(--line);color:var(--mut);border-radius:6px;font:700 14px "Chakra Petch";cursor:pointer;padding:8px 12px;text-align:left}
+.step b{display:block;color:var(--tx);font-size:20px}
+.step[aria-selected=true]{border-color:var(--cy);color:var(--cy);box-shadow:0 0 18px #6f80ee33}
+.step[aria-selected=true] b{color:var(--cy)}
+.bar{height:3px;background:var(--line);border-radius:3px;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--g);box-shadow:0 0 10px var(--cy);transition:width .4s}
+.detail{min-height:230px}
+.detail h3{font-size:26px;margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.tags span{border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:13px;color:var(--tx)}
+.learn{color:var(--gr);font:700 13px "Chakra Petch";margin-top:14px}
+/* arch */
+.arch{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.node{cursor:pointer}
+.node rect{fill:#171233;stroke:var(--cy);stroke-width:1.2;transition:.2s}
+.node:hover rect,.node.on rect,.node:focus rect{fill:#0c3440;filter:drop-shadow(0 0 8px #6f80ee88)}
+.node text{fill:var(--tx);font-size:13px;font-weight:700;text-anchor:middle;pointer-events:none}
+.info{margin-top:12px;min-height:82px;border-left:3px solid var(--cy)}
+.info h3{font-size:20px;margin-bottom:4px}
+/* telemetry */
+.dash{background:var(--panel);border:1px solid var(--cy);border-radius:10px;padding:16px;box-shadow:0 0 40px #6f80ee18}
+.dh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:500 12px "Chakra Petch";color:var(--gr);margin-bottom:12px}
+.dh em{color:var(--am);font-style:normal}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{background:#0b0818;border:1px solid var(--line);border-radius:6px;padding:10px}
+.tile small{color:var(--mut);font-size:12px}
+.tile div{font:700 clamp(20px,5.5vw,30px) "Chakra Petch";color:var(--cy);font-variant-numeric:tabular-nums}
+canvas{width:100%;height:110px;margin-top:10px;display:block}
+/* future */
+.fut{border:1px dashed var(--am);border-radius:10px;padding:20px;background:#c77dd808}
+.fut .badge{color:var(--am);font:700 13px "Chakra Petch"}
+.big{font:700 clamp(28px,8vw,60px)/1.05 "Chakra Petch"}
+.big.dim{color:var(--mut)}
+.cta{text-align:center;border-top:1px solid var(--line)}
+.cta .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+.cta h2{font-size:clamp(32px,9vw,72px)}
+footer{text-align:center;color:var(--mut);padding:36px 22px 60px;font-size:14px;border-top:1px solid var(--line)}
+footer b{font:700 22px "Chakra Petch";color:var(--tx)}
+/* nav */
+#menuBtn{position:fixed;right:16px;top:calc(env(safe-area-inset-top,0px) + 14px);z-index:20;width:48px;height:48px;border-radius:50%;border:1px solid var(--cy);background:#07060fcc;color:var(--cy);font-size:22px;cursor:pointer;backdrop-filter:blur(8px)}
+#menu{position:fixed;inset:0;z-index:15;background:#07060ff2;display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+#menu.open{display:flex}
+#menu a{font:700 30px "Chakra Petch";color:var(--tx);text-decoration:none;padding:8px 20px}
+#menu a:hover{color:var(--cy)}
+.logo{position:absolute;left:22px;top:calc(env(safe-area-inset-top,0px) + 22px);font:700 20px "Chakra Petch";z-index:2}
+.logo i{color:var(--cy);font-style:normal}
+.rv{opacity:0;transform:translateY(18px);transition:.7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+.comps{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}
+.comp{background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--tx);text-align:left;padding:16px;cursor:pointer;font:inherit;transition:.2s;width:100%}
+.comp:hover,.comp:focus-visible{border-color:var(--cy);outline:none}
+.comp[aria-expanded=true]{border-color:#c23f7c;box-shadow:0 0 22px #c23f7c33}
+.comp h3{font-size:20px;display:flex;justify-content:space-between;align-items:center}
+.comp h3::after{content:"+";color:var(--gr)}
+.comp[aria-expanded=true] h3::after{content:"–"}
+.comp small{color:var(--mut);font-size:14px;display:block;margin-top:2px}
+.comp .more{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--tx);font-size:15px}
+.comp[aria-expanded=true] .more{display:block}
+</style></head>
+<body>
+<div class="logo">C<i>ELEC</i></div>
+<button id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
+<nav id="menu" aria-label="Sections">
+<a href="#project">PROJECT</a><a href="#roadmap">ROADMAP</a><a href="#tech">TECH</a><a href="#telemetry">TELEMETRY</a><a href="#future">FUTURE</a><a href="#join">JOIN US</a></nav>
+<main>
+<section class="hero" id="top">
+<div class="status"><span class="dot"></span>SYSTEM STATUS: BUILDING</div>
+<h1><span>WE BUILD.</span><span>WE TEST.</span><span>WE EVOLVE.</span></h1>
+<div class="sub">CELEC — Electrical Engineering Project · ENSEM Casablanca</div>
+<p class="lead">From a simple electric drivetrain to a connected autonomous platform.</p>
+<div style="margin-top:24px"><a class="btn solid" href="#project">EXPLORE THE PROJECT ↓</a></div>
+</section>
+
+<section id="project">
+<h2 class="rv">IT STARTS WITH A CAR.</h2>
+<p class="lead rv">The first step is simple: build a miniature electric vehicle. But the goal is not just to make a car move. The car is our experimental platform for learning and integrating electrical power, embedded systems, control, sensors and communication.</p>
+<div class="rv" style="margin:34px 0 20px"><div class="big">NOT JUST A CAR.</div><p class="lead" style="margin-top:12px">The real objective is to turn theory into something that works in the real world.</p></div>
+<div class="grid">
+<div class="card rv"><h3>POWER</h3><p>Understand energy, batteries, BMS, ESC and motor control.</p></div>
+<div class="card rv"><h3>EMBEDDED</h3><p>Program the ESP32 and build the intelligence of the system.</p></div>
+<div class="card rv"><h3>SENSING</h3><p>Measure speed, voltage, current and temperature.</p></div>
+<div class="card rv"><h3>CONTROL</h3><p>Command the vehicle and control its behavior.</p></div>
+<div class="card rv"><h3>COMMUNICATION</h3><p>Transmit data and commands using wireless communication.</p></div>
+<div class="card rv"><h3>INTEGRATION</h3><p>Connect everything into one functional system.</p></div>
+</div></section>
+
+<section id="roadmap">
+<h2 class="rv">BUILD IT. STEP BY STEP.</h2>
+<p class="lead rv">We are not trying to build everything at once. Build, test, understand, improve, integrate.</p>
+<div class="steps" role="tablist" id="steps"></div>
+<div class="bar"><i id="prog"></i></div>
+<div class="card detail" id="detail" aria-live="polite"></div>
+</section>
+
+<section id="tech">
+<h2 class="rv">THE ESSENTIAL COMPONENTS.</h2>
+<p class="lead rv">Tap a component to see what it does in the vehicle.</p>
+<div class="comps" id="comps"></div>
+</section>
+
+<section id="telemetry">
+<h2 class="rv">WHEN THE CAR STARTS TALKING.</h2>
+<p class="lead rv">This is the kind of data the vehicle will one day send us.</p>
+<div class="dash rv">
+<div class="dh"><span>● DATA LINK: ONLINE</span><span>PROTOCOL: LoRa</span><em>SIMULATED TELEMETRY — NOT REAL DATA</em></div>
+<div class="tiles" id="tiles"></div>
+<canvas id="cv" width="600" height="110"></canvas>
+</div></section>
+
+<section id="future">
+<div class="fut rv"><div class="badge">FUTURE POSSIBILITY · TO BE DEFINED</div>
+<h2 style="margin-top:10px">AND THEN… WE GO FURTHER.</h2>
+<p class="lead">The vehicle is the first platform. Depending on our progress, the platform may grow toward aerial systems such as drones. Nothing is decided: the architecture, missions and level of autonomy will depend on the team’s skills and available hardware.</p>
+<div class="tags"><span>Ground vehicle</span><span>+</span><span>Aerial system</span></div>
+<div class="tags"><span>Observation</span><span>Surveillance</span><span>Data collection</span><span>Vehicle–drone collaboration</span></div>
+<p class="learn">THE NEXT STEP WILL BE BUILT BY THE TEAM.</p></div>
+</section>
+
+<section id="learn">
+<h2 class="rv">YOU DON’T NEED TO KNOW EVERYTHING.</h2>
+<p class="lead rv">You don’t need to already be an expert. You just need to be willing to learn and build. You will learn by building.</p>
+<div class="grid">
+<div class="card rv"><h3>⚡ ELECTRICAL</h3><ul><li>Power systems</li><li>Motors</li><li>Batteries</li><li>Wiring</li></ul></div>
+<div class="card rv"><h3>💻 EMBEDDED</h3><ul><li>ESP32</li><li>Programming</li><li>Communication</li></ul></div>
+<div class="card rv"><h3>🔧 HARDWARE</h3><ul><li>Assembly</li><li>Prototyping</li><li>Testing</li></ul></div>
+<div class="card rv"><h3>📡 COMMUNICATION</h3><ul><li>LoRa</li><li>Data transmission</li></ul></div>
+<div class="card rv"><h3>📐 CONTROL</h3><ul><li>Speed</li><li>Command</li><li>Feedback</li></ul></div>
+<div class="card rv"><h3>🧪 TESTING</h3><ul><li>Debugging</li><li>Measurements</li><li>Optimization</li></ul></div>
+</div></section>
+
+<section>
+<div class="big rv">THE PROJECT IS NOT THE CAR.</div>
+<div class="big rv" style="color:var(--cy);margin:8px 0 22px">THE PROJECT IS THE PEOPLE WHO BUILD IT.</div>
+<p class="lead rv">Every prototype starts with an idea. Every working system starts with a first test. Every engineer starts by learning.</p>
+<div class="big dim rv">BUILD.<br>FAIL.<br>UNDERSTAND.<br>IMPROVE.<br>REPEAT.</div>
+</section>
+
+<section class="cta" id="join">
+<h2 class="rv">WE CAN BUILD THE CAR.<br>WE CAN’T BUILD CELEC WITHOUT YOU.</h2>
+<p class="lead rv" style="margin:16px auto 0">We build the project. You build the team. Your first project can start here.</p>
+<div class="btns">
+<a class="btn solid" href="#join" data-join>JOIN CELEC</a>
+<a class="btn" href="#join" data-join>BUILD WITH US</a>
+<a class="btn" href="#join" data-join>LET’S BUILD TOGETHER</a></div>
+</section>
+</main>
+<footer><b>CELEC</b><br>ENSEM Casablanca<p>Built by students. Powered by curiosity.</p><p style="color:var(--cy)">See you inside.</p></footer>
+
+<script>
+// Replace with the real registration link
+const JOIN_URL="#join";
+document.querySelectorAll("[data-join]").forEach(a=>a.href=JOIN_URL);
+const $=s=>document.querySelector(s);
+// menu
+const menu=$("#menu"),mb=$("#menuBtn");
+function tg(o){menu.classList.toggle("open",o);mb.textContent=o?"✕":"☰";mb.setAttribute("aria-expanded",o)}
+mb.onclick=()=>tg(!menu.classList.contains("open"));
+menu.querySelectorAll("a").forEach(a=>a.onclick=()=>tg(false));
+// reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+// roadmap
+const S=[
+["PROPULSION","Battery + BMS + ESC + BLDC + ESP32","Make the motor work and control its speed.",["Battery","BMS","ESC","BLDC","ESP32"],"Power electronics, motor control, first ESP32 code"],
+["CHASSIS","Build and integrate the chassis.","Put everything on wheels.",["Motor","Wheels","Battery","ESC","ESP32","Power","Wiring"],"Mechanical integration, wiring, power distribution"],
+["REMOTE CONTROL","Command the vehicle from a controller.","Drive it on demand.",["FORWARD","REVERSE","STOP","SPEED +","SPEED −"],"Wireless commands, control logic, safe stopping"],
+["SENSORS","Let the vehicle measure itself.","Know what is happening inside.",["Speed (Hall / encoder)","Voltage","Current","Temperature","Obstacle detection"],"Measurement, calibration, signal processing"],
+["CONNECTIVITY","PC / Controller → LoRa → ESP32 → Vehicle","Send commands and receive data over LoRa.",["Speed","Battery level","Voltage","Current","Power","Temperature"],"Wireless communication, telemetry, system integration"]];
+const st=$("#steps"),dt=$("#detail");
+S.forEach((s,i)=>{const b=document.createElement("button");b.className="step";b.role="tab";b.innerHTML="<b>0"+(i+1)+"</b>"+s[0];b.onclick=()=>pick(i);st.appendChild(b)});
+function pick(i){const s=S[i];[...st.children].forEach((b,j)=>b.setAttribute("aria-selected",j==i));
+$("#prog").style.width=((i+1)/S.length*100)+"%";
+dt.innerHTML="<h3>0"+(i+1)+" — "+s[0]+"</h3><p>"+s[1]+"</p><p><b style='color:var(--tx)'>Goal:</b> "+s[2]+"</p><div class='tags'>"+s[3].map(t=>"<span>"+t+"</span>").join("")+"</div><div class='learn'>WHAT WE LEARN</div><p>"+s[4]+"</p>"}
+pick(0);
+// components
+const C=[
+["Li-ion battery","The energy source","Stores the energy that powers the whole vehicle. Its voltage and charge level are what we will later measure and send as telemetry."],
+["BMS","Battery protection","The Battery Management System protects the battery: it watches cells and prevents damage from over-charge, over-discharge or excess current."],
+["ESC","Motor driver","The Electronic Speed Controller takes power from the battery and drives the BLDC motor. It receives a speed command from the ESP32."],
+["BLDC motor","Propulsion","The brushless electric motor that turns the wheels. Our first goal is simply to make it run and control its speed."],
+["ESP32","The brain","The main microcontroller: it runs our code, controls the ESC, reads the sensors and handles communication."],
+["Sensors","Speed, voltage, current, temperature","Hall / encoder for speed, plus voltage, current and temperature sensors and obstacle detection. They let us measure and understand the system."],
+["LoRa","Long-range wireless","A radio link to send commands (direction, speed) and receive data (speed, battery, voltage, current, power, temperature)."],
+["Controller","Remote control","A PC or remote device that sends FORWARD, REVERSE, STOP, SPEED + and SPEED − to the vehicle."]];
+const cm=document.getElementById("comps");
+C.forEach(c=>{const b=document.createElement("button");b.className="comp";b.setAttribute("aria-expanded","false");
+b.innerHTML="<h3>"+c[0]+"</h3><small>"+c[1]+"</small><div class='more'>"+c[2]+"</div>";
+b.onclick=()=>b.setAttribute("aria-expanded",b.getAttribute("aria-expanded")!="true");cm.appendChild(b)});
+// telemetry (simulated)
+const T=[["SPEED","m/s",2.3,.4,1],["BATTERY","%",78,0,0],["VOLTAGE","V",15.8,.15,1],["CURRENT","A",3.2,.5,1],["POWER","W",50.5,6,1],["TEMP","°C",31,.6,0]];
+const tl=$("#tiles");T.forEach(t=>{tl.insertAdjacentHTML("beforeend",`<div class="tile"><small>${t[0]}</small><div>--</div><small>${t[1]}</small></div>`)});
+const cv=$("#cv"),cx=cv.getContext("2d"),H=[],reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function tick(){const vals=T.map((t,i)=>{let v=t[2]+(Math.random()-.5)*2*t[3];if(i==1)v=78-(Date.now()/60000%1)*0.5;return v});
+tl.querySelectorAll(".tile").forEach((el,i)=>el.children[1].textContent=vals[i].toFixed(T[i][4]));
+H.push([vals[0],vals[3]]);if(H.length>60)H.shift();
+cx.clearRect(0,0,600,110);cx.strokeStyle="#241c40";cx.lineWidth=1;for(let y=0;y<=110;y+=27){cx.beginPath();cx.moveTo(0,y);cx.lineTo(600,y);cx.stroke()}
+[[0,"#6f80ee",4],[1,"#e0679a",6]].forEach(([k,c,m])=>{cx.strokeStyle=c;cx.lineWidth=2;cx.beginPath();H.forEach((p,i)=>{const x=i*10,y=105-p[k]/m*90;i?cx.lineTo(x,y):cx.moveTo(x,y)});cx.stroke()})}
+tick();if(!reduce)setInterval(tick,900);
+</script>
+</body></html>
